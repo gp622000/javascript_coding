@@ -89,11 +89,13 @@ x === y //true
 // because Math.pow(2,53)+1 is round to Math.pow(2,53) 
 // safe integer consits of all interger having -(pow(2,53)-1) to (pow(2,53)-1)
 
-Number.MAX_VALUE =  pow(2,21024) // beyound that number would consider as Infinity.
+Number.MAX_VALUE =  pow(2,1024) // beyound that number would consider as Infinity.
 
 Number.MIN_SAFE_INTEGER = -(pow(2,53)-1)
 
 Number.MIN_VALUE =  5e-324
+
+0*Number.NEGATIVE_INFINITY // NaN
 
 Number.isFinite(0) //True
 Number.isFinite(2e64) //True
@@ -154,6 +156,16 @@ true.toString() // 'true'
 undefined.toString()// Error
 null.toString()//error
 Infinity.toString()// 'Infinity'
+
+12345.6789.toFixed() // string "12345"
+12345.6789.toFixed(1) // rounding // "12345.7"
+12345.6789.toFixed(7) // added 0 at last.
+2.55.toFixed(1) // "2.5"
+// Floating point numbers cannot represent all decimals precisely in binary.
+-2.34.toFixed(1) // -2.3 because the operator precedence.
+(-2.34).toFixed(1) // "-2.3"
+
+0.000123.toPrecision(2) // 0.00012 it won't count the 0.
 
 // String // String object wrapped to the primitive datatype string
 /*
