@@ -76,3 +76,94 @@ console.log(factorial(3));
     console.log(mul);
 })();
 
+
+// usecases of anonymous function 
+// Anonymous function is function without having name.
+// use of anonymous function to passing arguments as another function.
+
+var c = function(){
+    console.log('Anonymous function')
+}
+
+// IIFE
+// IIFE is defined by (function(){})(); it will call just after declearation
+(function print(a){
+    console.log(a)
+})(5);
+
+// test1.js
+
+var greeting = 'Hello';
+
+
+
+// iife.js
+// Spelling of Function was not correct , result into error
+// use - avoid creating global variable and function.
+(function (name) { 
+   var greeting = 'Namaste';
+   console.log(greeting + ' ' + name);
+})('Santosh');
+
+console.log(greeting)   
+
+
+// test1.js
+
+var greeting = 'Hello';
+
+// iife.js
+// Spelling of Function was not correct , result into error
+var c = function (name) { 
+   var greeting = 'Namaste';
+   console.log(greeting + ' ' + name);
+}
+c('gyan')
+console.log(greeting)   
+// Namste gyan
+// Hello
+var v, getValue;
+v = 1;
+getValue = (function (x) {
+    return function () { return x; };
+})(v);
+v = 2;
+
+getValue();  // 1
+
+var iterator = a.entries()
+// undefined
+for(let e of iterator){
+    console.log(e);
+}
+// VM4580:2 (2) [0, 1]
+// VM4580:2 (2) [1, 2]
+// VM4580:2 (2) [2, 3]
+// VM4580:2 (2) [3, 4]
+
+
+// difference between function statement and expression reflects in the hosting.
+a() // print 'a called'
+b() // b is not a function. because of hoisting.
+
+
+// function statement  and declearation.
+
+function a(){
+    console.log('a called');
+}
+
+// function expression 
+// when we put a function in the variable name then that called as function expression
+var b = function(){
+    console.log('b called')
+}
+
+// Anonymous function. will use when we need a function as values.
+// if the anonymous function is define like function statement then it will give the error.
+// function (){
+
+// }
+
+// first class function means we can pass the function as argument and also return fuction from function are called as first class function.
+

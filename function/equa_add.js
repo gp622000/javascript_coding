@@ -98,3 +98,5 @@ NaN == NaN // false.
 // 1 operand is number and other is string so convert string to number.
 // Number("[object Object]") which is NaN.
 // NaN === 1(false)
+
+-null == false // true

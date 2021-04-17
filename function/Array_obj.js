@@ -374,3 +374,179 @@ numbers.sort(function(a,b){
 (5) [1, 2, 3, 5, 100]
 
 // if it doesn't contain Infinity and NaN):
+
+let items = new Array(5).fill(0)
+// undefined
+console.log(items)
+// (5) [0, 0, 0, 0, 0]
+
+
+const testArray = [4,7,10];
+
+const arry1 = [1,5,2]
+undefined
+arry1.toLocaleString('de-De',{style:'currency',currency:'EUR'})
+// "1,00 €,5,00 €,2,00 €"
+
+object1 = {}
+// {}
+Object.isExtensible(object1)
+// true
+Object.preventExtensions(object1);
+console.log(Object.isExtensible(object1));
+// expected output: false
+
+// Sealed objects are by definition non-extensible.
+var sealed = Object.seal({});
+Object.isExtensible(sealed); // === false
+
+// Frozen objects are also by definition non-extensible.
+var frozen = Object.freeze({});
+Object.isExtensible(frozen); // === false
+
+
+const object1 = {
+  property1 : 42
+}
+
+Object.seal(object1)
+object1.property1 = 33;
+console.log(object1.property1) // 33
+
+Object.seal(object1)
+// once we seal the object we can't add new property but we can change the existing property.
+// we can't delete the property.
+
+const obj = {
+  prop: 42
+};
+
+Object.freeze(obj);
+
+obj.prop = 33;
+// Throws an error in strict mode
+
+console.log(obj.prop);
+// expected output: 42
+
+// Case 1: Evaluation result is the same as using ===
+Object.is(25, 25);                // true
+Object.is('foo', 'foo');          // true
+Object.is('foo', 'bar');          // false
+Object.is(null, null);            // true
+Object.is(undefined, undefined);  // true
+Object.is(window, window);        // true
+Object.is([], []);                // false
+var foo = { a: 1 };
+var bar = { a: 1 };
+Object.is(foo, foo);              // true
+Object.is(foo, bar);              // false
+
+// Case 2: Signed zero
+Object.is(0, -0);                 // false
+Object.is(+0, -0);                // false
+Object.is(-0, -0);                // true
+Object.is(0n, -0n);               // true
+
+// Case 3: NaN
+Object.is(NaN, 0/0);              // true
+Object.is(NaN, Number.NaN)        // true
+
+[1,2,3,5,5].copyWithin(4)
+// (5) [1, 2, 3, 5, 1]
+[1,2,3,5,5,8,9,2].copyWithin(3)
+// (8) [1, 2, 3, 1, 2, 3, 5, 5]
+[1,2,3,5,5,8,9,2].copyWithin(2)
+// (8) [1, 2, 1, 2, 3, 5, 5, 8]
+
+a1 = new Array(5)
+// (5) [empty × 5]
+arr.fill(0)
+// (3) [0, 0, 0]
+
+arr.findIndex(function(item){
+  return item === 3 })
+// 3
+arr.findIndex(function(item){
+  return item === 3 })
+// 3
+arr.findIndex(function(item){
+  return item === 4 })
+// 0
+
+arr.findIndex(function(item){
+  return item === -1 })
+// -1
+
+arr.flatMap(function(item){
+  return [item , item * 2]
+});
+// (8) [4, 8, 4, 8, 4, 8, 3, 6]
+
+i1.flat()
+// (6) ["1", "gyan", "2", "prakash", "3", "kumar"]
+
+Array.from([1,2,3,4],function(item){
+  return item + item
+})
+// (4) [2, 4, 6, 8]
+
+arr.includes(3)
+// true
+arr.includes(3,-1)
+// true
+
+Array.isArray(arr)
+// true
+arr = [4,4,4,3]
+arr.join()
+// "4,4,4,3"
+arr.join('-')
+// "4-4-4-3"
+arr.lastIndexOf(4)
+// 2
+arr.lastIndexOf(5)
+// -1
+
+Array(1,'gyan',5)
+// (3) [1, "gyan", 5]
+
+Array(NaN)
+// VM34292:1 Uncaught RangeError: Invalid array length
+
+Array.of(NaN)
+// [NaN]
+
+arr.reduce(function(sum,item){
+  return sum + item
+},0)
+// 15
+arr.reduceRight(function(sum,item){
+  return sum + item
+})
+// 15
+
+i1.splice(10)
+// []
+
+i1 = i1.flat()
+// (6) ["1", "gyan", "2", "prakash", "3", "kumar"]
+i1.slice(4)
+// (2) ["3", "kumar"]
+i1.slice(19)
+// []
+i1.toString()
+// "1,gyan,2,prakash,3,kumar"
+i1.push.apply(i1,[1,2,3]);
+// 9
+i1
+// (9) ["1", "gyan", "2", "prakash", "3", "kumar", 1, 2, 3]
+
+const module = {
+  x:42,
+  getx : function(){
+      return this.x
+  }
+};
+// undefined
+const unboundGetx = module.getx;

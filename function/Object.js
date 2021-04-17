@@ -308,3 +308,81 @@ const chicken = { sound: 'Cluck!', legs: 2, __proto__: pet };
 
 chicken.legs; // => 2
 // chicken.legs evaluates to 2. JavaScript picks the own property legs (which is 2) over the inherited legs (which is 4).
+
+Object.fromEntries(i)
+// {1: "gyan", 2: "prakash", 3: "kumar"}
+i.hasOwnProperty(5)
+// false
+i.hasOwnProperty(1)
+// true
+
+let simpleColors = {
+  colorA : 'white',
+  colorB : 'black'
+};
+// undefined
+let natureColors = {
+  colorC : 'green',
+  colorD : 'yellow'
+};
+// undefined
+Object.setPrototypeOf(natureColors , simpleColors)
+// {colorC: "green", colorD: "yellow"}colorC: "green"colorD: "yellow"__proto__: colorA: "white"colorB: "black"__proto__: Object
+Object.keys(natureColors)
+// (2) ["colorC", "colorD"]
+natureColors['colorA']
+// "white"
+
+let meals = {
+  mealA: 'Breakfast',
+  mealB: 'Lunch',
+  mealC: 'Dinner'
+};
+for (let [key, value] of Object.entries(meals)) {
+  console.log(key + ':' + value);
+}
+// 'mealA:Breakfast' 'mealB:Lunch' 'mealC:Dinner'
+
+let greetings = {
+  morning: 'Good morning',
+  midday: 'Good day',
+  evening: 'Good evening'
+};
+let greetingsMap = new Map(Object.entries(greetings));
+greetingsMap.get('morning'); // => 'Good morning'
+greetingsMap.get('midday');  // => 'Good day'
+greetingsMap.get('evening'); // => 'Good evening'
+
+
+
+/*************** constructor function ********************/
+
+// Defining the object type by writing constructor function.
+// create a instance of object by writing new.
+
+function Car(make,model,year){
+  this.make = make;
+  this.model = model;
+  this.year = year;
+}
+
+var myCar = new Car('MG','hector+',2017)
+
+
+// constructor property return a refrence to the object constructor function that created instance object
+
+let o = {};
+o.constructor === Object // true.
+
+let a = [];
+a.constructor === Array // true.
+
+let n = new Number;
+n.constructor === Number // true.
+
+
+// this will call the window object when it will call globally
+console.log(this)
+// windows{};
+
+
