@@ -386,3 +386,11 @@ console.log(this)
 // windows{};
 
 
+/******************* Map *******************/
+// The difference between map and object are it has size property.
+// if we want to do keep the keys as object we can do it by using WeakMap.
+
+
+
+
+

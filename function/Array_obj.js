@@ -550,3 +550,58 @@ const module = {
 };
 // undefined
 const unboundGetx = module.getx;
+
+
+// JavaScript typed arrays are array-like objects that provide a mechanism for reading and writing raw binary data in memory buffers.
+let arr1 = [1, 2, 3, 4];
+
+arr1.map(x => [x * 2]);
+// [[2], [4], [6], [8]]
+
+arr1.flatMap(x => [x * 2]);
+// [2, 4, 6, 8]
+
+// only one level is flattened
+arr1.flatMap(x => [[x * 2]]);
+// [[2], [4], [6], [8]]
+
+
+let a = [5, 4, -3, 20, 17, -33, -4, 18]
+//       |\  \  x   |  | \   x   x   |
+//      [4,1, 4,   20, 16, 1,       18]
+
+a.flatMap( (n) =>
+  (n < 0) ?      [] :
+  (n % 2 == 0) ? [n] :
+                 [n-1, 1]
+)
+
+// expected output: [4, 1, 4, 20, 16, 1, 18]
+let arr1 = ["it's Sunny in", "", "California"];
+
+arr1.map(x => x.split(" "));
+// [["it's","Sunny","in"],[""],["California"]]
+
+arr1.flatMap(x => x.split(" "));
+// ["it's","Sunny","in", "", "California"]
+
+a.join("")
+// "123"
+
+a.flatMap( (n) =>
+  (n < 0) ?      [] :
+  (n % 2 == 0) ? [n] :
+                 [n-1, 1]
+)
+
+// expected output: [4, 1, 4, 20, 16, 1, 18]
+
+Array.of('1','2','3')
+// (3) ["1", "2", "3"]
+
+var arr = ['a', 'b', 'c', 'd', 'e'];
+var iterator = arr.values();
+
+for (let letter of iterator) {
+  console.log(letter);
+}  //"a" "b" "c" "d" "e"

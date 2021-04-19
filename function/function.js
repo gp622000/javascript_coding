@@ -166,4 +166,154 @@ var b = function(){
 // }
 
 // first class function means we can pass the function as argument and also return fuction from function are called as first class function.
+// arrow function takes this from outer function means lexically.
+// arrow function cannot used as a constructor.
+// arrow function can accesses arguments from the outer function.
 
+
+
+const Car = (color) => {
+    this.color = color;
+}
+// undefined
+const myCar = new Car('white')
+//Uncaught TypeError: Car is not a constructor
+
+
+const arguArrow = () => {
+    console.log(arguments)
+}
+// undefined
+arguArrow('this' , 'is','gyan')
+// VM1980:2 Uncaught ReferenceError: arguments is not defined
+
+// we can pass the arguments to arrow function by using rest parameter
+
+const restArrowFunction = (...args) => {
+    console.log(args);
+}
+restArrowFunction('a','b')
+// VM2299:2 (2) ["a", "b"]
+
+function myRegularFunction(){
+    const myArrowFunction = (...args) =>{
+        console.log(...args);
+    }
+    myArrowFunction('c','d');
+}
+// undefined
+myRegularFunction('a','b')
+// VM2520:3 c d
+
+class Name{
+    constructor(hero){
+        this.hero = hero;
+    }
+    
+    logName(){
+        console.log(this.hero)
+        
+    }
+}
+// undefined
+const batman = new Name('gyan')
+// undefined
+batman
+// Name {hero: "gyan"}
+setTimeout(batman.logName, 1000);
+// after 1 second logs "undefined"
+setTimeout(batman.logName.bind(batman), 1000);
+// after 1 second logs "Batman"
+// batman.logName.bind(batman) binds this value to batman instance. Now you’re sure that the method doesn’t lose the context
+
+class Hero {
+    constructor(heroName) {
+      this.heroName = heroName;
+    }
+  
+    logName = () => {
+      console.log(this.heroName);
+    }
+  }
+  
+  const batman = new Hero('Batman');
+//   Now you can use batman.logName as a callback without any manual binding of this. The value of this inside logName() method is always the class instance:
+  
+  setTimeout(batman.logName, 1000);
+  // after 1 second logs "Batman"
+
+  (function(){
+    'use strict';
+    if(true){
+        function ok(){
+            return 'true ok';
+        }
+    }else{
+        function ok(){
+            return 'false ok';
+        }
+    }
+    console.log(ok());
+    
+})();
+// VM4458:12 Uncaught ReferenceError: ok is not defined
+
+
+(function() {
+    'use strict';
+    let ok;
+    if (true) {
+      ok = function() {
+        return 'true ok';
+      };
+    } else {
+      ok = function() {
+        return 'false ok';
+      };
+    }
+    console.log(typeof ok === 'function'); // => true
+    console.log(ok()); // => 'true ok'
+  })();
+
+  const numbers = {
+    numberA : 5,
+    numberB : 10,
+    
+    sum : function(){
+        console.log(this === numbers);
+        
+        function calculate(){
+            console.log(this === numbers) // false;
+            return this.numberA + this.numberB;
+        }
+        return calculate();
+    }
+};
+// undefined
+numbers.sum();
+// VM1156:6 true
+// VM1156:9 false
+// NaN
+
+
+
+
+  const numbers1 = {
+    numberA : 5,
+    numberB : 10,
+    
+    sum : function(){
+        console.log(this === numbers);
+        
+        const calculate = ()  => {
+            console.log(this === numbers) // false;
+            return this.numberA + this.numberB;
+        }
+      return calculate();  
+    }
+};
+
+numbers1.sum();
+// VM1272:6 false
+// VM1272:9 false
+// 15

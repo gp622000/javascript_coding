@@ -71,3 +71,14 @@ name.printfullName(name1,["Rampur Nausahan"]);
 // bind method will return a method which will call later it directly not printing the method.
 let printMyName = getfullName.bind(name1,"rampur")
 printMyName();
+
+// eventListener with closures.
+
+function attachEventListner(){
+    let count = 0;
+    document.getElementById('clickMe')
+    .addEventListener('click',function(){
+        console.log('Button Clicked',count++)
+    })
+}
+attachEventListner();
