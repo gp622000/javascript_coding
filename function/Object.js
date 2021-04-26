@@ -162,6 +162,18 @@ const obj = {
   obj.prop = 33;
   // Throws an error in strict mode
 
+// we'll give the dog an owner, that also has a name (mine ;) 
+const obj = { name: "Doggo", owner: { name: "Ben" } }
+// we'll again freeze the object
+Object.freeze(obj)
+
+// and this time we'll change the name of the owner
+obj.owner.name = "Bla"
+
+console.log(obj) // {name: "Doggo", owner: {name: "Bla"}}
+
+
+
 //   The Object.seal() method seals an object, preventing new properties from being added to it and marking all existing properties as non-configurable. Values of present properties can still be changed as long as they are writable.
 
 const object1 = {
@@ -392,5 +404,55 @@ console.log(this)
 
 
 
+
+
+function getName(){
+  return this.fistName + ' ' + this.secondName;
+}
+
+var Name = {
+  firstName : 'Gyan',
+  secondName : 'prakash'
+} 
+
+getName.call(Name); // "Gyan prakash"
+getName.apply(Name); // "Gyan prakash"
+
+this.x = 9;    // 'this' refers to global 'window' object here in a browser
+const module = {
+  x: 81,
+  getX: function() { return this.x; }
+};
+
+module.getX();
+//  returns 81
+
+const retrieveX = module.getX;
+retrieveX();
+//  returns 9; the function gets invoked at the global scope
+
+//  Create a new function with 'this' bound to module
+//  New programmers might confuse the
+//  global variable 'x' with module's property 'x'
+const boundGetX = retrieveX.bind(module);
+boundGetX();
+//  returns 81
+
+
+// we can create methods using class in javascript.
+class Polygon{
+  constructor(sides){
+      this.sides = sides
+  }
+  
+  perimeter(){
+      let sum = 0
+      for(let i=0; i<this.sides.length; i++){
+          sum = sum+this.sides[i]
+      }
+      return sum;
+  }
+}
+const rectangle = new Polygon([1,2,3,4,5]);
 
 

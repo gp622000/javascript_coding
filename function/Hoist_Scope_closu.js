@@ -40,14 +40,14 @@ var z = x()
 console.log(z);
 
 
-let name = {
+let name1 = {
     firstName : 'gyan',
     lastName : 'prakash',
     printfullName : function(address){
         console.log(this.firstName + " " + this.lastName + address)
     }
 }
-name.printfullName();
+name1.printfullName();
 
 let name2 = {
     firstName = "Gyan",
@@ -55,7 +55,7 @@ let name2 = {
 }
 
 // call and apply are function borrowing
-console.log(name.printfullName.call(name2,'Rampur Nausahan'))
+console.log(name1.printfullName.call(name2,'Rampur Nausahan'))
 
 
 let getfullName = function(address){
@@ -66,7 +66,7 @@ getfullName.call(name1)
 
 // the difference between call and apply is that call will take argurmnet directly but apply takes as list
 
-name.printfullName(name1,["Rampur Nausahan"]);
+name1.printfullName(name1,["Rampur Nausahan"]);
 
 // bind method will return a method which will call later it directly not printing the method.
 let printMyName = getfullName.bind(name1,"rampur")

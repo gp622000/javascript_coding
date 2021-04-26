@@ -148,7 +148,7 @@ undefined.toLocaleString() // Error
 (1.23e-10).toFixed(2)  // Returns '0.00'
 2.34.toFixed(1)        // Returns '2.3'
 2.35.toFixed(1)        // Returns '2.4'. Note it rounds up
-2.55.toFixed(1)        // Returns '2.5'. Note it rounds down - see warning above
+2.55.toFixed(1)        // Returns '2.5'. Note it rounds down 
 -2.34.toFixed(1)       // Returns -2.3 (due to operator precedence, negative number literals don't return a string...)
 (-2.34).toFixed(1)     // Returns '-2.3
 
@@ -196,3 +196,32 @@ let frNumber = testNumber.toLocaleString('fr');
 
 e
 
+var A = 123.456789;
+
+A.toFixed()      // 123
+A.toFixed(0)     // 123
+A.toFixed(1)     // 123.5
+A.toFixed(2)     // 123.46
+A.toFixed(3)     // 123.457
+A.toFixed(4)     // 123.4568
+A.toFixed(5)     // 123.45679
+A.toFixed(6)     // 123.456789
+A.toFixed(7)     // 123.4567890
+A.toFixed(8)     // 123.45678900
+A.toFixed(9)     // 123.456789000
+A.toFixed(10)    // 123.4567890000
+A.toFixed(11)    // 123.45678900000
+
+A.toPrecision()      // 123.456789 
+A.toPrecision(0)     // --- ERROR --- 
+A.toPrecision(1)     // 1e+2
+A.toPrecision(2)     // 1.2e+2
+A.toPrecision(3)     // 123
+A.toPrecision(4)     // 123.5
+A.toPrecision(5)     // 123.46
+A.toPrecision(6)     // 123.457
+A.toPrecision(7)     // 123.4568
+A.toPrecision(8)     // 123.45679
+A.toPrecision(9)     // 123.456789
+A.toPrecision(10)    // 123.4567890
+A.toPrecision(11)    // 123.45678900
