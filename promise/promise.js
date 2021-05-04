@@ -67,9 +67,55 @@ function videoDetails(video){
 loginUser('gyan@gmail.com','adjkfasldffjk')
     .then((data,reject)=>getUserVideos(data.userEmail))
     .then(data=>videoDetails(data[0]))
-    .then(data=>console.log(data));
+    .then(data=>console.log(data))
+    .catch(err=>console.log(err));
     
 
 // Start undefined End we are in setTime out.
 console.log('End');
 
+
+
+p1.then(function(value) {
+    console.log(value); // "Success!"
+    return Promise.reject('oh, no!');
+  }).catch(function(e) {
+    console.error(e); // "oh, no!"
+  }).then(function(){
+    console.log('after a catch the chain is restored');
+  }, function () {
+    console.log('Not fired due to the catch');
+  });
+
+  var p1 = Promise.resolve("calling next");
+
+  var p2 = p1.catch(function (reason) {
+      //This is never called
+      console.error("catch p1!");
+      console.error(reason);
+  });
+  
+  console.log(p1)
+  console.log(p2)
+  p2.then(function (value) {
+      console.log("next promise's onFulfilled"); /* next promise's onFulfilled */
+      console.log(value); /* calling next */
+  }, function (reason) {
+      console.log("next promise's onRejected");
+      console.log(reason);
+  });
+//   VM695:10 Promise {<fulfilled>: "calling next"}__proto__: Promise[[PromiseState]]: "fulfilled"[[PromiseResult]]: "calling next"
+//   VM695:11 Promise {<pending>}__proto__: Promise[[PromiseState]]: "fulfilled"[[PromiseResult]]: "calling next"
+//   VM695:13 next promise's onFulfilled
+//   VM695:14 calling next
+
+var original = Promise.resolve(33)
+var cast = Promise.resolve(original)
+
+cast.then(function(value){
+    console.log('Value: '+value)
+})
+console.log('original === caste ? '+(original === cast))
+
+// Original === caste ? true.
+// value : 33
